@@ -10,7 +10,7 @@ export default function HeroSection({ onExploreAnalysis, onExploreXai, onOpenUpl
         <div className="flex flex-wrap items-center gap-2 mb-4">
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-medical-50 text-medical-700 border border-medical-200 shadow-xs">
             <Microscope className="w-3.5 h-3.5 mr-1.5 text-medical-600" />
-            Healthcare Analytics CA-03 Project
+            Healthcare Analytics Research Project
           </span>
           <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200 shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span>
@@ -21,6 +21,7 @@ export default function HeroSection({ onExploreAnalysis, onExploreXai, onOpenUpl
             EfficientNet-B0 + Grad-CAM
           </span>
         </div>
+
 
         {/* Heading and Subtitle */}
         <div className="max-w-3xl">

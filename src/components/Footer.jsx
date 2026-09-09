@@ -30,12 +30,13 @@ export default function Footer() {
             </div>
             <div>
               <p className="font-bold text-slate-800">
-                COVID-19 Radiograph AI — Healthcare Analytics CA-03
+                COVID-19 Radiograph AI — Healthcare Analytics Project
               </p>
               <p className="text-[11px] text-slate-400">
                 Explainable Deep Learning for COVID-19 Detection Using Chest Radiographs
               </p>
             </div>
+
           </div>
 
           <div className="flex items-center space-x-4">

@@ -10,6 +10,7 @@ import GradCamViewer from './components/GradCamViewer';
 import AttentionAnalysis from './components/AttentionAnalysis';
 import PredictionExplorer from './components/PredictionExplorer';
 import ModelPerformance from './components/ModelPerformance';
+import MethodologyOverview from './components/MethodologyOverview';
 import ModelInsights from './components/ModelInsights';
 import HealthcareInsights from './components/HealthcareInsights';
 import Footer from './components/Footer';
@@ -144,15 +145,19 @@ export default function App() {
           />
         </section>
 
-        {/* 8. Model Performance Section */}
+        {/* 8. Methodology & Academic Specifications */}
+        <MethodologyOverview />
+
+        {/* 9. Model Performance Section */}
         <section aria-label="Simulated Architecture Benchmarks">
           <ModelPerformance />
         </section>
 
-        {/* 9. Model Insights */}
+        {/* 10. Model Insights */}
         <section aria-label="Research Takeaways">
           <ModelInsights />
         </section>
+
 
         {/* 10. Healthcare Analytics Insights */}
         <HealthcareInsights />

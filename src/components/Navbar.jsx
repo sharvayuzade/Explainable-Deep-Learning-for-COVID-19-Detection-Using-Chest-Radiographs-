@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Activity, ShieldAlert, Cpu, CheckCircle2, Menu, X, Info, UploadCloud } from 'lucide-react';
+import { Activity, ShieldAlert, Cpu, Menu, X, Info, UploadCloud } from 'lucide-react';
 
 export default function Navbar({ activeSection, onOpenUploader }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -28,40 +28,37 @@ export default function Navbar({ activeSection, onOpenUploader }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between py-2.5 min-h-[4.25rem]">
           
-          {/* Brand / Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-lg bg-medical-50 border border-medical-200 flex items-center justify-center text-medical-600 shadow-sm">
-              <Activity className="w-6 h-6 stroke-[2.2]" />
+          {/* Brand / Logo - Single line, generous vertical padding, no clipping */}
+          <div className="flex items-center space-x-3 shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-medical-50 border border-medical-200/90 flex items-center justify-center text-medical-600 shadow-xs">
+              <Activity className="w-5 h-5 stroke-[2.3]" />
             </div>
-            <div>
+            <div className="flex flex-col justify-center">
               <div className="flex items-center space-x-2">
-                <span className="font-bold text-slate-900 text-lg tracking-tight">
+                <span className="font-extrabold text-slate-900 text-base sm:text-lg tracking-tight whitespace-nowrap leading-none py-0.5">
                   COVID-19 Radiograph AI
                 </span>
-                <span className="hidden md:inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">
-                  CA-03
-                </span>
               </div>
-              <p className="text-xs text-slate-500 font-medium tracking-normal hidden sm:block">
+              <p className="text-[11px] sm:text-xs text-slate-500 font-medium tracking-normal mt-0.5 leading-tight hidden xs:block">
                 Explainable Deep Learning Research Dashboard
               </p>
             </div>
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.href)}
-                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
                   activeSection === link.href.replace('#', '')
-                    ? 'text-medical-700 bg-medical-50/80 font-semibold'
+                    ? 'text-medical-700 bg-medical-50/90 font-bold'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70'
                 }`}
               >
@@ -70,10 +67,10 @@ export default function Navbar({ activeSection, onOpenUploader }) {
             ))}
           </nav>
 
-          {/* Right: Model Status & Global Persistent DEMO DATA Badge */}
-          <div className="hidden lg:flex items-center space-x-3">
+          {/* Right: Model Status & Global Persistent DEMO DATA Badge + Upload CTA */}
+          <div className="hidden md:flex items-center space-x-2.5 xl:space-x-3 shrink-0">
             {/* Model Metadata Tags */}
-            <div className="flex items-center text-xs font-mono text-slate-600 bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1 space-x-2">
+            <div className="flex items-center text-[11px] font-mono text-slate-600 bg-slate-50 border border-slate-200/80 rounded-lg px-2.5 py-1.5 space-x-2">
               <span className="flex items-center text-slate-700">
                 <Cpu className="w-3.5 h-3.5 mr-1 text-slate-500" />
                 Model: <span className="font-semibold text-slate-900 ml-1">Demo EfficientNet</span>
@@ -92,7 +89,7 @@ export default function Navbar({ activeSection, onOpenUploader }) {
                 onMouseEnter={() => setTooltipVisible(true)}
                 onMouseLeave={() => setTooltipVisible(false)}
                 onClick={() => setTooltipVisible(!tooltipVisible)}
-                className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-amber-50 text-amber-900 border border-amber-300 shadow-sm hover:bg-amber-100 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400"
+                className="inline-flex items-center px-2.5 py-1.5 rounded-lg text-xs font-bold bg-amber-50 text-amber-900 border border-amber-300/80 shadow-xs hover:bg-amber-100 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400"
                 aria-label="Demo Data Disclaimer"
               >
                 <span className="w-2 h-2 rounded-full bg-amber-500 mr-1.5"></span>
@@ -120,33 +117,32 @@ export default function Navbar({ activeSection, onOpenUploader }) {
             <button
               type="button"
               onClick={onOpenUploader}
-              className="inline-flex items-center px-3 py-1.5 rounded-md text-xs font-bold text-white bg-medical-600 hover:bg-medical-700 shadow-sm transition-colors"
+              className="inline-flex items-center px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-medical-600 hover:bg-medical-700 shadow-xs transition-colors"
             >
               <UploadCloud className="w-3.5 h-3.5 mr-1.5" />
               Upload Image
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu & Upload Buttons */}
           <div className="flex md:hidden items-center space-x-2">
             <button
               type="button"
               onClick={onOpenUploader}
-              className="p-1.5 rounded-md text-medical-700 bg-medical-50 border border-medical-200"
+              className="p-1.5 rounded-lg text-medical-700 bg-medical-50 border border-medical-200"
               aria-label="Upload Radiograph"
             >
               <UploadCloud className="w-4 h-4" />
             </button>
             <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
-              DEMO DATA
+              DEMO
             </span>
-
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
@@ -172,7 +168,7 @@ export default function Navbar({ activeSection, onOpenUploader }) {
             </a>
           ))}
           <div className="pt-2">
-            <div className="p-2.5 rounded bg-amber-50 border border-amber-200 text-amber-900 text-xs">
+            <div className="p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-xs">
               <span className="font-bold">Notice:</span> All predictions and XAI outputs are simulated demonstration values.
             </div>
           </div>

@@ -1,8 +1,9 @@
 # Explainable Deep Learning for COVID-19 Detection Using Chest Radiographs
 
-> **Healthcare Analytics (CA-03 Project)**  
+> **Healthcare Analytics Project**  
 > *Symbiosis Institute of Technology (SIT), Symbiosis International (Deemed University)*  
 > **Academic Demonstration & Research Prototype Dashboard**
+
 
 [![Frontend](https://img.shields.io/badge/Frontend-React%20%7C%20Vite%20%7C%20TailwindCSS-0284c7)](https://vitejs.dev/)
 [![Explainable AI](https://img.shields.io/badge/XAI-Grad--CAM-0d9488)](https://arxiv.org/abs/1610.02391)
@@ -166,4 +167,5 @@ To download the full 6,500 chest X-ray images from V7 Labs Darwin:
 
 ## ⚖️ Academic Disclaimer
 
-This project was developed for the **Healthcare Analytics (CA-03)** course at Symbiosis Institute of Technology. All outputs, inferences, and saliency heatmaps are intended purely for academic and interpretability research demonstrations and do not represent verified medical diagnostics.
+This project was developed for the **Healthcare Analytics** course at Symbiosis Institute of Technology. All outputs, inferences, and saliency heatmaps are intended purely for academic and interpretability research demonstrations and do not represent verified medical diagnostics.
+
