@@ -23,6 +23,60 @@ The platform provides clinicians, researchers, and students with an interpretabl
 
 ---
 
+## 🔄 System Pipeline & Workflow
+
+### End-to-End Explainable Inference Flow
+
+```mermaid
+flowchart TD
+    A[Start: User selects demo case<br/>or uploads chest radiograph] --> B[Input validation and preprocessing<br/>including contrast normalization]
+    B --> C[Lung segmentation and anatomical mask generation]
+    C --> D[Primary inference: EfficientNet-B0]
+    C --> D1[Benchmark alternative: ResNet50]
+    C --> D2[Benchmark alternative: CNN Baseline]
+    D --> E[Prediction: COVID-19 or Non-COVID<br/>with confidence score]
+    D1 --> E
+    D2 --> E
+    E --> F[Generate Grad-CAM saliency map]
+    F --> G[Overlay Grad-CAM on radiograph<br/>and compare with lung regions]
+    G --> H[Compute explanation score and trust check]
+    H --> I[Render charts and case-level results<br/>as simulated demonstration outputs]
+```
+
+### Application & Data/Component Pipeline
+
+```mermaid
+flowchart LR
+    U[User in Browser] --> FE[React + Vite Frontend]
+    FE --> APP[App.jsx Orchestrator]
+
+    APP --> NAV[UI Components]
+    NAV --> HERO[HeroSection / Navbar]
+    NAV --> XRAY[XRayViewer + GradCamViewer + ImageUploader]
+    NAV --> ANA[AttentionAnalysis + ExplanationScore + TrustCheck]
+    NAV --> PERF[ModelPerformance + Insights Components]
+
+    APP --> DATA[Mock Data Modules]
+    DATA --> CASES[src/data/mockCases.js]
+    DATA --> METRICS[src/data/modelMetrics.js]
+
+    APP -. optional dataset pull .-> DARWIN[scripts/pull_dataset.py<br/>Darwin helper]
+
+    PERF --> CHARTS[Recharts Visualizations]
+    CHARTS --> OUT[Dashboard output in browser]
+    XRAY --> OUT
+    ANA --> OUT
+```
+
+**Legend / Notes**
+- **Input stage**: uses either curated demo cases or uploaded chest radiographs.
+- **Model stage**: EfficientNet-B0 is the primary demonstration model; ResNet50 and CNN Baseline are benchmark comparators.
+- **Explainability stage**: Grad-CAM overlays are compared against segmented lung regions to support interpretability analysis.
+- **Output stage**: predictions, confidence, trust indicators, and charts are presented as **simulated demonstration data (`DEMO DATA`)**.
+- This repository remains an **academic demonstration**, not a clinical diagnostic system.
+
+---
+
 ## ✨ Key Features
 
 ### 1. Interactive X-Ray Analysis Workbench
@@ -168,4 +222,3 @@ To download the full 6,500 chest X-ray images from V7 Labs Darwin:
 ## ⚖️ Academic Disclaimer
 
 This project was developed for the **Healthcare Analytics** course at Symbiosis Institute of Technology. All outputs, inferences, and saliency heatmaps are intended purely for academic and interpretability research demonstrations and do not represent verified medical diagnostics.
-
